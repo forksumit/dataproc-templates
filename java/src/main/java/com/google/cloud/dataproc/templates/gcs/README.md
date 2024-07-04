@@ -103,8 +103,11 @@ bin/start.sh \
 --templateProperty gcs.jdbc.output.saveMode=<Append|Overwrite|ErrorIfExists|Ignore>
 
 optional parameters:
+--templateProperty gcs.jdbc.input.delimeter=<>
 --templateProperty gcs.jdbc.spark.partitions=<>
 --templateProperty gcs.jdbc.output.batchInsertSize=<>
+
+When specifying `gcs.jdbc.input.format=csv`, you can specify a custom delimeter by specifying templateProperty `gcs.jdbc.input.delimeter` (ex: `gcs.jdbc.input.delimeter='|'`)
 
 Specifying spark partitions is recommeneded when we have small number of current partitions. By default it will keep the initial partitions set by spark read() which will depend on the block size and number of source files. CAUTION: If you specify a higher number than the current number of partitions, spark will use repartition() for a complete reshuffle, which would add up extra time to your job run.
 

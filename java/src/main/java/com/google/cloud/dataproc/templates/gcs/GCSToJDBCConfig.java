@@ -36,6 +36,7 @@ import org.apache.spark.sql.SaveMode;
 public class GCSToJDBCConfig {
 
   public static final String GCS_JDBC_INPUT_FORMAT = "gcs.jdbc.input.format";
+  public static final String GCS_JDBC_INPUT_DELIMETER = "gcs.jdbc.input.delimeter";
   public static final String GCS_JDBC_INPUT_LOCATION = "gcs.jdbc.input.location";
   public static final String GCS_JDBC_OUTPUT_URL = "gcs.jdbc.output.url";
   public static final String GCS_JDBC_OUTPUT_TABLE = "gcs.jdbc.output.table";
@@ -63,6 +64,9 @@ public class GCSToJDBCConfig {
               + "|"
               + GCS_JDBC_PRQT_FORMAT)
   private String inputFormat;
+
+  @JsonProperty(value = GCS_JDBC_INPUT_DELIMETER)
+  private String inputDelimiter;
 
   @JsonProperty(value = PROJECT_ID_PROP)
   @NotEmpty
@@ -103,6 +107,10 @@ public class GCSToJDBCConfig {
 
   public String getInputFormat() {
     return inputFormat;
+  }
+
+  public String getInputDelimeter() {
+    return inputDelimiter;
   }
 
   public String getProjectId() {
@@ -147,6 +155,7 @@ public class GCSToJDBCConfig {
     return MoreObjects.toStringHelper(this)
         .add("inputLocation", inputLocation)
         .add("inputFormat", inputFormat)
+        .add("inputDelimiter", inputDelimiter)
         .add("projectId", projectId)
         .add("batchInsertSize", batchInsertSize)
         .add("table", table)

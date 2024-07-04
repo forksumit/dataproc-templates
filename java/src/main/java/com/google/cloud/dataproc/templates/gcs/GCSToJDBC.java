@@ -16,6 +16,7 @@
 package com.google.cloud.dataproc.templates.gcs;
 
 import static com.google.cloud.dataproc.templates.util.TemplateConstants.GCS_JDBC_AVRO_FORMAT;
+import static com.google.cloud.dataproc.templates.util.TemplateConstants.GCS_JDBC_CSV_DELIMETER;
 import static com.google.cloud.dataproc.templates.util.TemplateConstants.GCS_JDBC_CSV_FORMAT;
 import static com.google.cloud.dataproc.templates.util.TemplateConstants.GCS_JDBC_CSV_HEADER;
 import static com.google.cloud.dataproc.templates.util.TemplateConstants.GCS_JDBC_CSV_INFER_SCHEMA;
@@ -72,6 +73,7 @@ public class GCSToJDBC implements BaseTemplate {
             spark
                 .read()
                 .format(config.getInputFormat())
+                .option(GCS_JDBC_CSV_DELIMETER, config.getInputDelimeter())
                 .option(GCS_JDBC_CSV_HEADER, true)
                 .option(GCS_JDBC_CSV_INFER_SCHEMA, true)
                 .load(config.getInputLocation());

@@ -252,6 +252,7 @@ public interface TemplateConstants {
   String GCS_JDBC_AVRO_FORMAT = "avro";
 
   String GCS_JDBC_CSV_FORMAT = "csv";
+  String GCS_JDBC_CSV_DELIMETER = "delimeter";
   String GCS_JDBC_CSV_HEADER = "header";
   String GCS_JDBC_CSV_INFER_SCHEMA = "inferSchema";
   String GCS_JDBC_ORC_FORMAT = "orc";
